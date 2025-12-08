@@ -1,0 +1,45 @@
+# Pre-commit hooks configuration
+# See https://pre-commit.com for more information
+# To install: pip install pre-commit
+# To setup: pre-commit install
+# To run manually: pre-commit run --all-files
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+      - id: end-of-file-fixer
+        name: Fix end of files
+      - id: check-yaml
+        name: Check YAML files
+      - id: check-added-large-files
+        name: Check for large files
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+      - id: mixed-line-ending
+        name: Check mixed line endings
+
+  # Java formatting with Spotless (lint-staged style - only staged files)
+  - repo: local
+    hooks:
+      - id: spotless-format-check
+        name: Spotless Format Check
+        entry: hooks/spotless-hook.sh
+        language: script
+        files: \.java$
+        pass_filenames: false
+        description: Check Java code formatting with Spotless (google-java-format)
+
+  # Java style checking with Checkstyle (lint-staged style - only staged files)
+  - repo: local
+    hooks:
+      - id: checkstyle
+        name: Checkstyle Check
+        entry: hooks/checkstyle-hook.sh
+        language: script
+        files: \.java$
+        pass_filenames: false
+        description: Check Java code style with Checkstyle (Google Java Style)
