@@ -3,9 +3,10 @@
 # Pre-commit framework ensures this only runs when Java files are staged
 
 echo "Running Spotless format apply..."
+echo ""
 
 # Run Spotless apply
-mvn spotless:apply -q
+mvn spotless:apply
 SPOTLESS_EXIT_CODE=$?
 
 if [ $SPOTLESS_EXIT_CODE -ne 0 ]; then

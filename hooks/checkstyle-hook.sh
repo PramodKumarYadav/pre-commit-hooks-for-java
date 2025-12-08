@@ -3,14 +3,16 @@
 # Pre-commit framework ensures this only runs when Java files are staged
 
 echo "Running Checkstyle..."
+echo ""
 
-# Run Checkstyle
-mvn checkstyle:check -q
+# Run Checkstyle (without -q to show violations)
+mvn checkstyle:check
+CHECKSTYLE_EXIT_CODE=$?
 
-if [ $? -ne 0 ]; then
+if [ $CHECKSTYLE_EXIT_CODE -ne 0 ]; then
   echo ""
   echo "❌ Checkstyle check failed!"
-  echo "Please fix the checkstyle violations before committing."
+  echo "Please fix the checkstyle violations shown above before committing."
   exit 1
 fi
 
