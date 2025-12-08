@@ -11,16 +11,46 @@ repos:
     hooks:
       - id: trailing-whitespace
         name: Trim trailing whitespace
+
       - id: end-of-file-fixer
         name: Fix end of files
+
       - id: check-yaml
         name: Check YAML files
+
+      - id: pretty-format-json
+        name: Pretty format JSON files
+        args: [--autofix, --no-sort-keys]
+
+      - id: check-json
+        name: Check JSON files
+
+      - id: check-xml
+        name: Check XML files
+
+      - id: detect-aws-credentials
+        name: Detect AWS credentials
+        args: [--allow-missing-credentials]
+
+      - id: detect-private-key
+        name: Detect private keys
+
+      - id: forbid-submodules
+        name: Forbid git submodules
+
       - id: check-added-large-files
         name: Check for large files
+        args: [--maxkb=500]
+
       - id: check-merge-conflict
         name: Check for merge conflicts
+
       - id: mixed-line-ending
         name: Check mixed line endings
+
+      - id: no-commit-to-branch
+        name: Prevent committing to certain branches
+        args: [--branch, prod, --branch, master]
 
   # Java formatting with Spotless (auto-fix and re-stage)
   - repo: local
