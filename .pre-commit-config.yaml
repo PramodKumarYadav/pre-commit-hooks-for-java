@@ -25,8 +25,8 @@ repos:
   # Java formatting with Spotless (lint-staged style - only staged files)
   - repo: local
     hooks:
-      - id: spotless-format-check
-        name: Spotless Format Check
+      - id: spotless-format-fix
+        name: Spotless Format Fix
         entry: hooks/spotless-hook.sh
         language: script
         files: \.java$

@@ -17,10 +17,11 @@ done
 
 # Run Spotless apply
 mvn spotless:apply -q
+SPOTLESS_EXIT_CODE=$?
 
-echo "spotless apply status code: $?"
+echo "spotless apply status code: $SPOTLESS_EXIT_CODE"
 
-if [ $? -ne 0 ]; then
+if [ $SPOTLESS_EXIT_CODE -ne 0 ]; then
   echo ""
   echo "❌ Spotless format apply failed!"
   echo "Run 'mvn spotless:apply' to fix formatting issues."
