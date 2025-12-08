@@ -20,6 +20,22 @@ A repository demonstrating pre-commit hooks for Java projects with Maven, JUnit 
 
 ## 🛠️ Setup
 
+### Quick Setup (Recommended)
+
+Run the automated setup script:
+
+```bash
+./quick-start.sh
+```
+
+This will automatically:
+1. Install pre-commit (if not already installed)
+2. Install git hooks
+3. Build the project
+4. Run pre-commit hooks on all files
+
+### Manual Setup
+
 ### 1. Clone the repository
 
 ```bash
@@ -39,7 +55,20 @@ pip install pre-commit
 pre-commit install
 ```
 
-### 4. (Optional) Run hooks manually on all files
+### 4. Verify the setup
+
+```bash
+./verify-setup.sh
+```
+
+This script will:
+- Check if pre-commit is installed
+- Check if git hooks are installed
+- Verify Maven and Java installations
+- Run all tests
+- Run pre-commit hooks on all files
+
+### 5. (Optional) Run hooks manually on all files
 
 ```bash
 pre-commit run --all-files
@@ -69,6 +98,7 @@ pre-commit-hooks-for-java/
 │   └── checkstyle-hook.sh    # Checkstyle check hook
 ├── pom.xml                   # Maven configuration
 ├── .pre-commit-config.yaml   # Pre-commit hooks configuration
+├── verify-setup.sh           # Setup verification script
 └── README.md
 ```
 
@@ -238,4 +268,3 @@ See LICENSE file for details.
 - [Checkstyle](https://checkstyle.org/)
 - [JUnit 5](https://junit.org/junit5/)
 - [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
-
