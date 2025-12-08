@@ -1,6 +1,6 @@
 #!/bin/bash
 # Spotless hook - formats only staged Java files
-# This script runs Spotless format check on staged files only (lint-staged style)
+# This script runs Spotless format apply on staged files only (lint-staged style)
 
 # Get the list of staged Java files
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.java$' || true)
@@ -10,20 +10,22 @@ if [ -z "$STAGED_FILES" ]; then
   exit 0
 fi
 
-echo "Running Spotless format check on staged files..."
+echo "Running Spotless format apply on staged files..."
 echo "$STAGED_FILES" | while read -r file; do
   echo "  - $file"
 done
 
-# Run Spotless check
-mvn spotless:check -q
+# Run Spotless apply
+mvn spotless:apply -q
+
+echo "spotless apply status code: $?"
 
 if [ $? -ne 0 ]; then
   echo ""
-  echo "❌ Spotless format check failed!"
+  echo "❌ Spotless format apply failed!"
   echo "Run 'mvn spotless:apply' to fix formatting issues."
   exit 1
 fi
 
-echo "✅ Spotless format check passed!"
+echo "✅ Spotless format apply passed!"
 exit 0
