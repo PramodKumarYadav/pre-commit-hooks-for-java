@@ -4,15 +4,31 @@
 
 echo "Running Spotless format apply..."
 
+# Get the list of staged Java files before formatting
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.java$' || true)
+
+if [ -z "$STAGED_FILES" ]; then
+  echo "No staged Java files to format"
+  exit 0
+fi
+
 # Run Spotless apply
 mvn spotless:apply -q
+SPOTLESS_EXIT_CODE=$?
 
-if [ $? -ne 0 ]; then
+if [ $SPOTLESS_EXIT_CODE -ne 0 ]; then
   echo ""
   echo "❌ Spotless format apply failed!"
   echo "Run 'mvn spotless:apply' to fix formatting issues."
   exit 1
 fi
 
-echo "✅ Spotless format apply passed!"
+# Re-stage the formatted files
+echo "$STAGED_FILES" | while read -r file; do
+  if [ -f "$file" ]; then
+    git add "$file"
+  fi
+done
+
+echo "✅ Spotless format apply passed and files re-staged!"
 exit 0

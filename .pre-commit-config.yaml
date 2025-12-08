@@ -22,7 +22,7 @@ repos:
       - id: mixed-line-ending
         name: Check mixed line endings
 
-  # Java formatting with Spotless (lint-staged style - only staged files)
+  # Java formatting with Spotless (auto-fix and re-stage)
   - repo: local
     hooks:
       - id: spotless-format-fix
@@ -31,7 +31,7 @@ repos:
         language: script
         files: \.java$
         pass_filenames: false
-        description: Check Java code formatting with Spotless (google-java-format)
+        description: Auto-fix Java code formatting with Spotless and re-stage files
 
   # Java style checking with Checkstyle (lint-staged style - only staged files)
   - repo: local
