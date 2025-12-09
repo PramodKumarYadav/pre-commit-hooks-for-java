@@ -11,7 +11,7 @@ echo ""
 echo "Step 1: Checking pre-commit installation..."
 if ! command -v pre-commit &> /dev/null; then
     echo "   pre-commit not found. Installing..."
-    pip install --user pre-commit
+    pip3 install --user pre-commit
     if [ $? -eq 0 ]; then
         echo "   ✅ pre-commit installed successfully"
     else

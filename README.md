@@ -16,7 +16,7 @@ A repository demonstrating pre-commit hooks for Java projects with Maven, JUnit 
 - Java 11 or higher
 - Maven 3.6 or higher
 - Python 3.6+ (for pre-commit framework)
-- pip (Python package manager)
+- pip3 (Python package manager)
 
 ## 🛠️ Setup
 
@@ -46,7 +46,7 @@ cd pre-commit-hooks-for-java
 ### 2. Install pre-commit framework
 
 ```bash
-pip install pre-commit
+pip3 install pre-commit
 ```
 
 ### 3. Install the git hook scripts
