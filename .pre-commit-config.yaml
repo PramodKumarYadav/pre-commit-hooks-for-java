@@ -1,6 +1,6 @@
 # Pre-commit hooks configuration
 # See https://pre-commit.com for more information
-# To install: pip install pre-commit
+# To install: pip3 install pre-commit
 # To setup: pre-commit install
 # To run manually: pre-commit run --all-files
 
