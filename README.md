@@ -268,6 +268,3 @@ See LICENSE file for details.
 - [Checkstyle](https://checkstyle.org/)
 - [JUnit 5](https://junit.org/junit5/)
 - [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
-
-## Appendix
-remove this. only for testing.
