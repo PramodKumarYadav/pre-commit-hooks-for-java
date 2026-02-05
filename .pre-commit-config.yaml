@@ -52,24 +52,31 @@ repos:
         name: Prevent committing to certain branches
         args: [--branch, prod, --branch, master]
 
-  # Java formatting with Spotless (auto-fix and re-stage)
-  - repo: local
+  - repo: https://github.com/power-tester/pre-commit-maven-hooks
+    rev: v1.0.0
     hooks:
-      - id: spotless-format-fix
-        name: Spotless Format Fix
-        entry: hooks/spotless-hook.sh
-        language: script
-        files: \.java$
-        pass_filenames: false
-        description: Auto-fix Java code formatting with Spotless and re-stage files
+      - id: maven-checkstyle
+      - id: maven-spotless
+        args: ["--apply"]
 
-  # Java style checking with Checkstyle (lint-staged style - only staged files)
-  - repo: local
-    hooks:
-      - id: checkstyle
-        name: Checkstyle Check
-        entry: hooks/checkstyle-hook.sh
-        language: script
-        files: \.java$
-        pass_filenames: false
-        description: Check Java code style with Checkstyle (Google Java Style)
+  # # Java formatting with Spotless (auto-fix and re-stage)
+  # - repo: local
+  #   hooks:
+  #     - id: spotless-format-fix
+  #       name: Spotless Format Fix
+  #       entry: hooks/spotless-hook.sh
+  #       language: script
+  #       files: \.java$
+  #       pass_filenames: false
+  #       description: Auto-fix Java code formatting with Spotless and re-stage files
+
+  # # Java style checking with Checkstyle (lint-staged style - only staged files)
+  # - repo: local
+  #   hooks:
+  #     - id: checkstyle
+  #       name: Checkstyle Check
+  #       entry: hooks/checkstyle-hook.sh
+  #       language: script
+  #       files: \.java$
+  #       pass_filenames: false
+  #       description: Check Java code style with Checkstyle (Google Java Style)
