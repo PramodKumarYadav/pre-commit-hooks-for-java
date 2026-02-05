@@ -55,9 +55,10 @@ repos:
   - repo: https://github.com/power-tester/pre-commit-maven-hooks
     rev: v1.0.0
     hooks:
-      - id: maven-checkstyle
       - id: maven-spotless
         args: ["--apply"]
+      - id: maven-checkstyle
+
 
   # # Java formatting with Spotless (auto-fix and re-stage)
   # - repo: local
